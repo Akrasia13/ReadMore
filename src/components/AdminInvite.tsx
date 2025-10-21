@@ -32,7 +32,7 @@ export default function AdminInvite() {
   };
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-orange-50 via-blue-50 to-orange-50 p-6">
+  <div className="min-h-screen bg-gradient-to-br from-orange-50 via-blue-50 to-orange-50 p-6">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="mb-8">
@@ -75,7 +75,7 @@ export default function AdminInvite() {
                 <button
                   type="submit"
                   disabled={status === 'sending' || !email.trim()}
-                  className="w-full bg-linear-to-r from-blue-600 to-blue-700 text-white py-3 px-6 rounded-lg hover:from-blue-700 hover:to-blue-800 disabled:from-gray-400 disabled:to-gray-400 disabled:cursor-not-allowed transition-all font-semibold shadow-md hover:shadow-lg"
+                  className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white py-3 px-6 rounded-lg hover:from-blue-700 hover:to-blue-800 disabled:from-gray-400 disabled:to-gray-400 disabled:cursor-not-allowed transition-all font-semibold shadow-md hover:shadow-lg"
                 >
                   {status === 'sending' ? (
                     <span className="flex items-center justify-center">
@@ -116,7 +116,7 @@ export default function AdminInvite() {
 
           {/* Stats card */}
           <div className="space-y-6">
-            <div className="bg-linear-to-br from-orange-500 to-orange-600 rounded-xl shadow-lg p-6 text-white">
+            <div className="bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl shadow-lg p-6 text-white">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-orange-100 text-sm font-medium">Total Invites Sent</span>
                 <span className="text-3xl">📊</span>
@@ -124,7 +124,7 @@ export default function AdminInvite() {
               <p className="text-4xl font-bold">{sentEmails.length}</p>
             </div>
 
-            <div className="bg-linear-to-br from-blue-500 to-blue-600 rounded-xl shadow-lg p-6 text-white">
+            <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl shadow-lg p-6 text-white">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-blue-100 text-sm font-medium">Session Status</span>
                 <span className="text-3xl">🔐</span>
@@ -145,7 +145,7 @@ export default function AdminInvite() {
               {sentEmails.map((sentEmail, index) => (
                 <div
                   key={index}
-                  className="flex items-center justify-between p-4 bg-linear-to-r from-blue-50 to-orange-50 rounded-lg border border-blue-100 hover:border-blue-300 transition-colors"
+                  className="flex items-center justify-between p-4 bg-gradient-to-r from-blue-50 to-orange-50 rounded-lg border border-blue-100 hover:border-blue-300 transition-colors"
                 >
                   <div className="flex items-center">
                     <span className="text-green-500 text-xl mr-3">✓</span>

@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link, NavLink } from 'react-router-dom';
 import { useAuth } from './hooks/useAuth';
 import { signOut } from './lib/auth';
 import Home from './pages/Home';
@@ -12,7 +12,7 @@ export default function App() {
 
   return (
     <BrowserRouter>
-      <div className="min-h-screen bg-linear-to-br from-orange-50 via-blue-50 to-orange-50">
+  <div className="min-h-screen bg-gradient-to-br from-orange-100 via-blue-100 to-orange-50">
         <Header userEmail={user?.email} isAuthenticated={isAuthenticated} loading={loading} />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -38,14 +38,21 @@ function Header({ userEmail, isAuthenticated, loading }: { userEmail?: string; i
   }
 
   return (
-    <div className="bg-white shadow-lg border-b border-orange-200">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-        <div className="flex items-center gap-6">
-          <h1 className="text-3xl font-bold bg-linear-to-r from-orange-600 to-blue-600 bg-clip-text text-transparent">📚 ReadMore</h1>
-          <nav className="flex gap-4 text-sm font-semibold">
-            <Link to="/" className="text-gray-600 hover:text-blue-600">🏠 Home</Link>
+    <header className="bg-linear-to-br from-orange-400 via-blue-300 to-orange-200 shadow-md">
+      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+        <div className="flex items-center gap-4">
+          <span className="inline-block mr-2">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="6" y="10" width="28" height="20" rx="4" fill="#60A5FA"/>
+              <rect x="10" y="6" width="24" height="20" rx="4" fill="#FBBF24"/>
+              <rect x="14" y="14" width="20" height="20" rx="4" fill="#34D399"/>
+            </svg>
+          </span>
+          <h1 className="text-3xl font-bold text-gray-900">ReadMore</h1>
+          <nav className="flex gap-4 text-base font-medium ml-6">
+            <NavLink to="/" className={({ isActive }) => isActive ? "text-blue-700 font-bold" : "text-gray-700 hover:text-blue-700"}>🏠 Home</NavLink>
             {isAuthenticated && (
-              <Link to="/admin" className="text-gray-600 hover:text-blue-600">� Admin</Link>
+              <NavLink to="/admin" className={({ isActive }) => isActive ? "text-orange-700 font-bold" : "text-gray-700 hover:text-orange-700"}>👑 Admin</NavLink>
             )}
           </nav>
         </div>
@@ -54,17 +61,15 @@ function Header({ userEmail, isAuthenticated, loading }: { userEmail?: string; i
             <span className="text-sm text-gray-500">Loading...</span>
           ) : isAuthenticated ? (
             <>
-              <div className="px-3 py-1 bg-orange-100 rounded-full">
-                <span className="text-sm text-orange-700 font-medium">{userEmail}</span>
-              </div>
-              <button onClick={handleSignOut} className="px-4 py-2 text-sm font-semibold text-red-600 hover:bg-red-50 rounded-lg border border-red-200">� Sign Out</button>
+              <span className="px-3 py-1 bg-orange-100 rounded-full text-sm text-orange-700">{userEmail}</span>
+              <button onClick={handleSignOut} className="px-4 py-2 text-sm font-semibold text-red-600 hover:bg-red-50 rounded-lg border border-red-200">Sign Out</button>
             </>
           ) : (
-            <Link to="/unauthenticated" className="text-sm text-gray-600 hover:text-blue-600">🔒 Sign In</Link>
+            <NavLink to="/unauthenticated" className={({ isActive }) => isActive ? "text-blue-700 font-bold" : "text-sm text-gray-600 hover:text-blue-600"}>🔒 Sign In</NavLink>
           )}
         </div>
       </div>
-    </div>
+    </header>
   );
 }
 
