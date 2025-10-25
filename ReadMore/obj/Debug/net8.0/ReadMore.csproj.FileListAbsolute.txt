@@ -1,0 +1,8 @@
+C:\Users\anton.hellman\source\repos\readmore\ReadMore\ReadMore\obj\Debug\net8.0\ReadMore.csproj.AssemblyReference.cache
+C:\Users\anton.hellman\source\repos\readmore\ReadMore\ReadMore\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\Users\anton.hellman\source\repos\readmore\ReadMore\ReadMore\obj\Debug\net8.0\ReadMore.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\anton.hellman\source\repos\readmore\ReadMore\ReadMore\obj\Debug\net8.0\ReadMore.AssemblyInfoInputs.cache
+C:\Users\anton.hellman\source\repos\readmore\ReadMore\ReadMore\obj\Debug\net8.0\ReadMore.AssemblyInfo.cs
+C:\Users\anton.hellman\source\repos\readmore\ReadMore\ReadMore\obj\Debug\net8.0\ReadMore.csproj.CoreCompileInputs.cache
+C:\Users\anton.hellman\source\repos\readmore\ReadMore\ReadMore\obj\Debug\net8.0\ReadMore.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\anton.hellman\source\repos\readmore\ReadMore\ReadMore\obj\Debug\net8.0\ReadMore.sourcelink.json
