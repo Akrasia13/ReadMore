@@ -1,37 +1,30 @@
-//using Supabase.Gotrue;
+using Supabase.Gotrue;
 
-//namespace ReadMore.Supabase;
+namespace ReadMore.Supabase;
 
-//public class AuthService
-//{
-// private readonly ISupabaseClientProvider _provider;
+public interface IAuthService
+{
+ Task SendMagicLinkIfUserExistsAsync(string email);
+}
 
-// public AuthService(ISupabaseClientProvider provider)
-// {
-//    _provider = provider;
-// }
+public class AuthService : IAuthService
+{
+     private readonly ISupabaseClientProvider _provider;
 
-// public async Task SendMagicLinkAsync(string email)
-// {
-//    var client = await _provider.GetClientAsync();
-//    await client.Auth.SignInWithOtp(new SignInWithOtpOptions { Email = email, ShouldCreateUser = true });
-// }
+     public AuthService(ISupabaseClientProvider provider) => _provider = provider;
 
-// public async Task<bool> IsLoggedInAsync()
-// {
-//    var client = await _provider.GetClientAsync();
-//    return client.Auth.CurrentSession != null;
-// }
-
-// public async Task SignOutAsync()
-// {
-//    var client = await _provider.GetClientAsync();
-//    await client.Auth.SignOut();
-// }
-//}
-
-//public class SignInWithOtpOptions
-//{
-// public string Email { get; set; } = string.Empty;
-// public bool ShouldCreateUser { get; set; } = false;
-//}
+     public async Task SendMagicLinkIfUserExistsAsync(string email)
+     {
+         if (string.IsNullOrWhiteSpace(email)) return;
+         var client = await _provider.GetClientAsync();
+         try
+         {
+             var opts = new SignInWithPasswordlessEmailOptions(email);
+             await client.Auth.SignInWithOtp(opts);
+         }
+         catch
+         {
+            // Ignore
+         }
+     }
+}

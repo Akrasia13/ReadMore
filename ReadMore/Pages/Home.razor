@@ -1,7 +1,31 @@
 ﻿@page "/"
+@using MudBlazor
+@inject ReadMore.Supabase.IAuthService Auth
 
-<PageTitle>Home</PageTitle>
+<PageTitle>Welcome</PageTitle>
 
-<h1>Hello, world!</h1>
+<MudPaper Class="pa-6 max-width-400 mx-auto" Elevation="6">
+ <MudText Typo="Typo.h5" Class="mb-4">Access your account</MudText>
+ <MudForm @ref="_form" OnValidSubmit="SubmitAsync">
+ <MudTextField @bind-Value="_email" Label="Email" Required="true" RequiredError="Email required" Variant="Variant.Outlined" />
+ <MudButton Type="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Class="mt-4" Disabled="_sending">Send Magic Link</MudButton>
+ </MudForm>
+ <MudText Class="mt-3" Color="Color.Success" Dense="true">@_status</MudText>
+</MudPaper>
 
-Welcome to your new app.
+@code {
+ private MudForm? _form;
+ private string _email = string.Empty;
+ private string _status = string.Empty;
+ private bool _sending;
+
+ private async Task SubmitAsync()
+	{
+		 if (_sending) return;
+		_sending = true;
+		_status = string.Empty;
+		await Auth.SendMagicLinkIfUserExistsAsync(_email.Trim());
+		_status = "If your email exists, a sign-in link was sent.";
+		_sending = false;
+	}
+}
